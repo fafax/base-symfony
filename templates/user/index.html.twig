@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div class="container form-user-admin">
+
+		<h2 class="text-center mb-5">CREATION DE COMPTE</h2>
+
+
+		{{ form_start(form) }}
+
+		{{ form_widget(form) }}
+
+
+		<div class="text-center">
+
+			<button type="submit" class="btn btn-primary round mt-3">Enregistrer</button>
+
+		</div>
+		{{ form_end(form) }}
+
+	</div>
+
+{% endblock %}
