@@ -2,18 +2,21 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\ArticleRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
-    public function index()
+    public function index(ArticleRepository $articleRepo)
     {
+        $articles = $articleRepo->findAll();
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'articles' => $articles
         ]);
     }
 }
