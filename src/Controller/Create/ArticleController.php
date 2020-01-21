@@ -16,10 +16,15 @@ class ArticleController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $em)
     {
+        
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $tab2 = [];
+            preg_match_all('/blob:http:\/\/[a-zA-Z0-9.|:|\/|-]*/', $form['texte']->getData(),$tab2);
+            $file = fbsql_read_blob($tab2[0]);
+            dd($file);
             $em->persist($article);
             $em->flush();
         }
