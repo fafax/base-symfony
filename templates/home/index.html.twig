@@ -10,3 +10,16 @@
         {% endfor %}
     </div>
 {% endblock %}
+
+{% block javascripts %}
+
+{{parent()}}
+
+<script> $(function () {
+
+   $('textarea.ckeditor').ckeditor();
+});</script>
+
+
+
+{% endblock %}
